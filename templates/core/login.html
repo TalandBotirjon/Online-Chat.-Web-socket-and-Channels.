@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Log in | {% endblock %}
+{% block content %}
+    <div class="p-5 lg:p-10 text-center">
+        <h1 class="text-3xl lg:text-4xl text-white">Log in</h1>
+    </div>
+
+    <form action="." method="post" class="lg:w-1/4 px-4 mx-auto">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label class="text-white">Username</label>
+            <input type="text" name="username" class="w-full mt-2 px-4 py-2 rounded-xl">
+        </div>
+        <div class="mb-3">
+            <label class="text-white">Password</label>
+
+            <input type="password" name="password" class="w-full mt-2 px-4 py-2 rounded-xl">
+        </div>
+        <div class="mb-3 text-center bg-teal-800 hover:bg-teal-700" style="display: flex;justify-content: center;padding: 10px 0; border-radius:0.75rem ">
+            <label class="text-white">
+                <a class="text-center" style="display:flex;align-items: center;" href="{% url 'signup' %}">
+                <span class="material-symbols-outlined"> person_add </span>
+                 Login
+                </a>
+            </label>
+        </div>
+        <button class="px-10 w-full py-3 rounded-xl text-white bg-teal-800 hover:bg-teal-700">Submit</button>
+    </form>
+
+
+{% endblock %}

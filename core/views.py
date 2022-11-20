@@ -3,8 +3,11 @@ from .forms import SignUpForm
 from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from django.contrib.auth.models import User
+
+
 def frontpage(request):
     return render(request, 'core/frontpage.html')
+
 
 def signup(request):
     if request.method == "POST":
@@ -19,6 +22,7 @@ def signup(request):
         form = SignUpForm()
     return render(request, 'core/signup.html', {'form': form})
 
+
 def loginview(request):
     if request.method == "POST":
         username = request.POST['username']
@@ -28,4 +32,6 @@ def loginview(request):
             login(request, user)
             messages.success(request, f"{username} you login Online chat site.")
             return redirect('/')
+        else:
+            messages.error(request, f'Not user login. Please check username or password.')
     return render(request, 'core/login.html')
